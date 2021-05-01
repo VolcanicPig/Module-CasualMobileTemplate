@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: 124259e9f0c734f4ebcee6c5fc755373
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cartoonish.060
+    100002: foot.L
+    100004: foot.R
+    100006: forearm.L
+    100008: forearm.R
+    100010: hand.L
+    100012: hand.L.002
+    100014: hand.L.005
+    100016: hand.L.009
+    100018: hand.R
+    100020: hand.R.002
+    100022: hand.R.005
+    100024: hand.R.009
+    100026: metarig.069
+    100028: shin.L
+    100030: shin.R
+    100032: spine
+    100034: spine.001
+    100036: spine.002
+    100038: spine.004
+    100040: spine.006
+    100042: //RootNode
+    100044: thigh.L
+    100046: thigh.R
+    100048: toe.L
+    100050: toe.R
+    100052: upper_arm.L
+    100054: upper_arm.R
+    400000: Cartoonish.060
+    400002: foot.L
+    400004: foot.R
+    400006: forearm.L
+    400008: forearm.R
+    400010: hand.L
+    400012: hand.L.002
+    400014: hand.L.005
+    400016: hand.L.009
+    400018: hand.R
+    400020: hand.R.002
+    400022: hand.R.005
+    400024: hand.R.009
+    400026: metarig.069
+    400028: shin.L
+    400030: shin.R
+    400032: spine
+    400034: spine.001
+    400036: spine.002
+    400038: spine.004
+    400040: spine.006
+    400042: //RootNode
+    400044: thigh.L
+    400046: thigh.R
+    400048: toe.L
+    400050: toe.R
+    400052: upper_arm.L
+    400054: upper_arm.R
+    2100000: No Name
+    4300000: Cartoonish.060
+    9500000: //RootNode
+    13700000: Cartoonish.060
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
