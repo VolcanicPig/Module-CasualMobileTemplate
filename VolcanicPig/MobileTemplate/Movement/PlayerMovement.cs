@@ -12,7 +12,7 @@ namespace VolcanicPig.Mobile.Movement
         private Vector3 _positionLastFrame;
         private Vector3 _fakeVelocity;
         public Vector3 FakeVelocity => _fakeVelocity;
-        private bool _canMove = true;
+        private bool _canMove = false;
         public bool CanMove => _canMove;
 
         public virtual void FixedUpdate()
