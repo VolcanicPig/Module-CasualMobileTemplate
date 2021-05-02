@@ -7,9 +7,15 @@ namespace VolcanicPig.Mobile.Movement
 {
     public class PlayerRotateMovement : PlayerMovement
     {
-        [SerializeField] private GestureController gestures;
         [SerializeField] private float rotateSpeed; 
 
+        private GestureController _gestures;
+        
+        private void Start() 
+        {
+            _gestures = GestureController.Instance; 
+        }
+        
         private void Update()
         {
             HandleRotation();
@@ -17,7 +23,7 @@ namespace VolcanicPig.Mobile.Movement
 
         private void HandleRotation()
         {
-            Vector2 touchDelta = gestures.TouchDelta;
+            Vector2 touchDelta = _gestures.TouchDelta;
             float step = rotateSpeed * Time.deltaTime; 
 
             transform.Rotate(Vector3.up * touchDelta.x * step); 

@@ -8,9 +8,15 @@ namespace VolcanicPig.Mobile.Movement
     [RequireComponent(typeof(PlayerSlideMovement))]
     public class RotatePlayerMeshFromVelocity : MonoBehaviour
     {
-        [SerializeField] private GestureController gestureController;
         [SerializeField] private float rotationSpeed, rotationMultiplier;
         [SerializeField] private float minYRot, maxYRot, minVelToRotate, maxVelToRotate;
+
+        private GestureController _gestureController;
+
+        private void Start() 
+        {
+            _gestureController = GestureController.Instance;     
+        }
 
         private void Update()
         {
@@ -27,7 +33,7 @@ namespace VolcanicPig.Mobile.Movement
 
         private float GetTargetYRot()
         {
-            Vector3 vel = gestureController.TouchDelta;
+            Vector3 vel = _gestureController.TouchDelta;
             float newRot = 0;
 
             if (vel.x > maxVelToRotate)

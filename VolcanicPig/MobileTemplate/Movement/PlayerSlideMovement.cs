@@ -9,8 +9,14 @@ namespace VolcanicPig.Mobile.Movement
     public class PlayerSlideMovement : PlayerMovement
     {
         [Header("Components")]
-        [SerializeField] private GestureController gestures;
         [SerializeField] private float sideMult, sideSpeed;
+        
+        private GestureController _gestures; 
+
+        private void Start() 
+        {
+            _gestures = GestureController.Instance;     
+        }
 
         private void Update()
         {
@@ -21,7 +27,7 @@ namespace VolcanicPig.Mobile.Movement
         {
             if (!CanMove) return;
             Vector3 cachedPosition = transform.position;
-            Vector2 touchDelta = gestures.TouchDelta;
+            Vector2 touchDelta = _gestures.TouchDelta;
 
             cachedPosition.x += touchDelta.x * sideMult * Time.deltaTime;
             cachedPosition.x = Mathf.Clamp(cachedPosition.x, -5, 5);
