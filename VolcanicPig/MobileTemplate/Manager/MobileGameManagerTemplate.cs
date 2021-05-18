@@ -93,7 +93,11 @@ namespace VolcanicPig.Mobile
 
         private void ScenesFullyLoaded()
         {
-            _currentPlayerRef = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            if(playerPrefab)
+            {
+                _currentPlayerRef = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            }
+
             ChangeState(GameState.Start);
         }
 
@@ -112,7 +116,11 @@ namespace VolcanicPig.Mobile
         {
             if (_currentPlayerRef) Destroy(_currentPlayerRef);
 
-            _currentPlayerRef = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            if(playerPrefab)
+            {
+                _currentPlayerRef = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            }
+            
             ChangeState(GameState.Start);
         }
 
