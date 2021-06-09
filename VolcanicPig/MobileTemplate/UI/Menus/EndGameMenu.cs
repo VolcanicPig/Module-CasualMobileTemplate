@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game;
 using UnityEngine;
 
 namespace VolcanicPig.Mobile.Ui
@@ -12,14 +13,14 @@ namespace VolcanicPig.Mobile.Ui
         {
             base.OnMenuOpened();
 
-            bool wonGame = MobileGameManager.Instance.GetWinState == WinState.Win;
+            bool wonGame = GameManager.Instance.GetWinState == WinState.Win;
             winScreen.SetActive(wonGame);
             loseScreen.SetActive(!wonGame);
         }
 
         public void RestartButtonPressed()
         {
-            MobileGameManager.Instance.RestartGame();
+            GameManager.Instance.RestartGame();
         }
     }
 }

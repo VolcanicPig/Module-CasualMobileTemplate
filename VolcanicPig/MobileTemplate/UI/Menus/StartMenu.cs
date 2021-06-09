@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game;
 using UnityEngine;
 
 namespace VolcanicPig.Mobile.Ui
@@ -8,7 +9,7 @@ namespace VolcanicPig.Mobile.Ui
     {
         public void StartGamePressed()
         {
-            MobileGameManager.Instance.StartGame();
+            GameManager.Instance.StartGame();
         }
     }
 }

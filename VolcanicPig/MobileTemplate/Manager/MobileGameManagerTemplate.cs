@@ -104,12 +104,14 @@ namespace VolcanicPig.Mobile
         public void StartGame()
         {
             ChangeState(GameState.InGame);
+            OnGameStarted(); 
         }
 
         public void EndGame(bool won)
         {
             _winState = won ? WinState.Win : WinState.Lose;
             ChangeState(GameState.End);
+            OnGameEnded(); 
         }
 
         public void RestartGame()
@@ -122,6 +124,7 @@ namespace VolcanicPig.Mobile
             }
             
             ChangeState(GameState.Start);
+            OnGameRestarted();
         }
 
         private void ChangeState(GameState state)
@@ -143,5 +146,14 @@ namespace VolcanicPig.Mobile
 
             OnGameStateChanged?.Invoke(state);
         }
+
+        public virtual void OnGameStarted()
+        { }
+
+        public virtual void OnGameEnded()
+        { }
+
+        public virtual void OnGameRestarted()
+        { }
     }
 }
