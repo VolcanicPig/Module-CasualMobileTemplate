@@ -69,7 +69,14 @@ namespace VolcanicPig.Mobile
 
         private void Start()
         {
+            LoadData(); 
             LoadScenes();
+        }
+
+        protected virtual void LoadData()
+        {
+            _level = PlayerPrefs.GetInt(KLevel);
+            _currency = PlayerPrefs.GetInt(KCurrency); 
         }
 
         public void LoadScenes()
@@ -133,6 +140,8 @@ namespace VolcanicPig.Mobile
             _winState = won ? WinState.Win : WinState.Lose;
             ChangeState(GameState.End);
             OnGameEnded(); 
+
+            if(won) Level++; 
         }
 
         public void RestartGame()
