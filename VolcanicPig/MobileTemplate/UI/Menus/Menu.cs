@@ -35,7 +35,6 @@ namespace VolcanicPig.Mobile.Ui
                 _canvasGroup.interactable = true;
                 _canvasGroup.blocksRaycasts = true;
             });
-
         }
 
         public void Close()
@@ -48,7 +47,6 @@ namespace VolcanicPig.Mobile.Ui
                 _canvasGroup.interactable = false;
                 _canvasGroup.blocksRaycasts = false;
             });
-
         }
 
         public virtual void OnMenuOpened() { }

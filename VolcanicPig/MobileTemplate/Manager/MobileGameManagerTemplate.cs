@@ -19,7 +19,7 @@ namespace VolcanicPig.Mobile
 
     public class MobileGameManagerTemplate<T> : SingletonBehaviour<T>
     {
-        public static Action<double> OnCurrencyChanged;
+        public static Action<int> OnCurrencyChanged;
         public static Action<GameState> OnGameStateChanged;
 
 
@@ -32,6 +32,9 @@ namespace VolcanicPig.Mobile
         [Header("Player")]
         [SerializeField] private GameObject playerPrefab;
 
+        private const string KCurrency = "Currency";
+        private const string KLevel = "Level"; 
+
         private GameObject _currentPlayerRef;
         public GameObject GetCurrentPlayer => _currentPlayerRef;
 
@@ -41,14 +44,26 @@ namespace VolcanicPig.Mobile
         private WinState _winState;
         public WinState GetWinState => _winState;
 
-        private double _currency = 0;
-        public double Currency
+        private int _currency = 0;
+        public int Currency
         {
             get { return _currency; }
             set
             {
                 _currency = value;
-                OnCurrencyChanged?.Invoke(_currency);
+                OnCurrencyChanged?.Invoke(value);
+                PlayerPrefs.SetInt(KCurrency, value); 
+            }
+        }
+
+        private int _level; 
+        public int Level
+        {
+            get { return _level; }
+            set
+            {
+                _level = value; 
+                PlayerPrefs.SetInt(KLevel, value); 
             }
         }
 
@@ -109,6 +124,12 @@ namespace VolcanicPig.Mobile
 
         public void EndGame(bool won)
         {
+            if(_gameState != GameState.InGame) 
+            {
+                Debug.LogError($"Cannot end the game whilst in State : {_gameState}"); 
+                return; 
+            }
+
             _winState = won ? WinState.Win : WinState.Lose;
             ChangeState(GameState.End);
             OnGameEnded(); 
@@ -116,6 +137,12 @@ namespace VolcanicPig.Mobile
 
         public void RestartGame()
         {
+            if(_gameState != GameState.End) 
+            {
+                Debug.LogError($"Cannot restart the game whilst in State : {_gameState}"); 
+                return; 
+            }
+
             if (_currentPlayerRef) Destroy(_currentPlayerRef);
 
             if(playerPrefab)
@@ -130,7 +157,8 @@ namespace VolcanicPig.Mobile
         private void ChangeState(GameState state)
         {
             Debug.Log($"Game State Changed :: {state}");
-
+            
+            _gameState = state; 
             switch (state)
             {
                 case GameState.Start:
