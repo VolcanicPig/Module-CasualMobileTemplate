@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game;
 using UnityEngine;
 using VolcanicPig.Mobile.Gestures;
 
@@ -22,16 +23,17 @@ namespace VolcanicPig.Mobile.Movement
 
         private void OnEnable()
         {
-            MobileGameManager.OnGameStateChanged += OnGameStateChanged;
+            GameManager.OnGameStateChanged += OnGameStateChanged;
         }
 
         private void OnDisable()
         {
-            MobileGameManager.OnGameStateChanged -= OnGameStateChanged;
+            GameManager.OnGameStateChanged -= OnGameStateChanged;
         }
 
         private void OnGameStateChanged(GameState state)
         {
+            Debug.Log($"Game state changed on player {state}");
             if (state == GameState.InGame)
             {
                 _canMove = true;
