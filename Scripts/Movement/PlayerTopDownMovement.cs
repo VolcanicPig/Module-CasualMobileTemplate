@@ -33,7 +33,6 @@ namespace VolcanicPig.Mobile.Movement
 
         private void OnGameStateChanged(GameState state)
         {
-            Debug.Log($"Game state changed on player {state}");
             if (state == GameState.InGame)
             {
                 _canMove = true;
