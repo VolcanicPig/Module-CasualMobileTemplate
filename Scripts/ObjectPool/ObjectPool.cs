@@ -15,7 +15,7 @@ namespace VolcanicPig.Mobile
     public class ObjectPool : SingletonBehaviour<ObjectPool>
     {
         [SerializeField] Pool[] objectPools; 
-        private Dictionary<string, List<GameObject>> _pool = new Dictionary<string, List<GameObject>>(); 
+        private Dictionary<string, List<PooledObjectBase>> _pool = new Dictionary<string, List<PooledObjectBase>>(); 
 
         private void Start() 
         {
@@ -26,13 +26,14 @@ namespace VolcanicPig.Mobile
         {
             for (int i = 0; i < objectPools.Length; i++)
             {
-                List<GameObject> newPool = new List<GameObject>(); 
+                List<PooledObjectBase> newPool = new List<PooledObjectBase>(); 
 
                 for (int j = 0; j < objectPools[i].poolSize; j++)
                 {
-                    GameObject poolObj = Instantiate(objectPools[i].prefab, transform); 
+                    PooledObjectBase poolObj = Instantiate(objectPools[i].prefab, transform).GetComponent<PooledObjectBase>(); 
+                    poolObj.poolKey = objectPools[i].key;
                     newPool.Add(poolObj); 
-                    poolObj.SetActive(false); 
+                    poolObj.gameObject.SetActive(false); 
                 }
 
                 _pool.Add(objectPools[i].key, newPool); 
@@ -47,16 +48,16 @@ namespace VolcanicPig.Mobile
                 return; 
             }
 
-            GameObject go = pooled.gameObject; 
+            PooledObjectBase go = pooled; 
             
             go.transform.SetParent(transform); 
             go.transform.localPosition = Vector3.zero; 
-            go.SetActive(false);
+            go.gameObject.SetActive(false);
 
             _pool[pooled.poolKey].Add(go); 
         }
 
-        public GameObject SpawnFromPool(string key)
+        public PooledObjectBase SpawnFromPool(string key)
         {
             if(!_pool.ContainsKey(key))
             {
@@ -64,10 +65,10 @@ namespace VolcanicPig.Mobile
                 return null; 
             }
 
-            GameObject go = _pool[key][_pool[key].Count - 1]; 
+            PooledObjectBase go = _pool[key][_pool[key].Count - 1]; 
             if(go)
             {
-                go.SetActive(true); 
+                go.gameObject.SetActive(true); 
 
                 _pool[key].RemoveAt(_pool[key].Count - 1); 
                 return go; 
@@ -75,7 +76,8 @@ namespace VolcanicPig.Mobile
 
             return null; 
         }
-        public GameObject SpawnFromPool(string key, Transform parent, Vector3 position)
+
+        public PooledObjectBase SpawnFromPool(string key, Transform parent, Vector3 position)
         {
             if(!_pool.ContainsKey(key))
             {
@@ -83,10 +85,12 @@ namespace VolcanicPig.Mobile
                 return null; 
             }
 
-            GameObject go = _pool[key][_pool[key].Count - 1]; 
+            if(_pool[key].Count < 0) return null; 
+
+            PooledObjectBase go = _pool[key][_pool[key].Count - 1]; 
             if(go)
             {
-                go.SetActive(true); 
+                go.gameObject.SetActive(true); 
                 go.transform.SetParent(parent); 
                 go.transform.position = position; 
 
