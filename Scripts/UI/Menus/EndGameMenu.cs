@@ -8,7 +8,7 @@ namespace VolcanicPig.Mobile.Ui
 {
     public class EndGameMenu : Menu
     {
-        [SerializeField] private GameObject winScreen, loseScreen;
+        // [SerializeField] private GameObject winScreen, loseScreen;
         [SerializeField] private TextMeshProUGUI titleText; 
 
         public override void OnMenuOpened()
@@ -17,8 +17,8 @@ namespace VolcanicPig.Mobile.Ui
 
             bool wonGame = GameManager.Instance.GetWinState == WinState.Win;
             
-            winScreen.SetActive(wonGame);
-            loseScreen.SetActive(!wonGame);
+            // winScreen.SetActive(wonGame);
+            // loseScreen.SetActive(!wonGame);
 
             if(titleText) titleText.text = wonGame ? 
                 $"Level {GameManager.Instance.Level} Complete!" : 
