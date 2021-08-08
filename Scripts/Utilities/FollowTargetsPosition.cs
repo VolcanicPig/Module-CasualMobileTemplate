@@ -9,6 +9,8 @@ namespace VolcanicPig.Utilities
         [SerializeField]
         private Transform target;
 
+        public void SetTarget(Transform t) => target = t; 
+
         [SerializeField]
         private bool followX, followY, followZ;
 
@@ -17,6 +19,7 @@ namespace VolcanicPig.Utilities
 
         private void Update()
         {
+            if (!target) return;
             Vector3 currentPos = transform.position;
             Vector3 targetPos = target.position;
 
