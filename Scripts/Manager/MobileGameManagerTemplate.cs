@@ -120,13 +120,13 @@ namespace VolcanicPig.Mobile
                 _currentPlayerRef = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
             }
 
+            OnGameStarted(); 
             ChangeState(GameState.Start);
         }
 
         public void StartGame()
         {
             ChangeState(GameState.InGame);
-            OnGameStarted(); 
         }
 
         public void EndGame(bool won)

@@ -32,6 +32,11 @@ namespace VolcanicPig.Mobile.Ui
 
         public void JumpMoveTo(Vector3 fromPosition, Vector3 toPosition, float duration, Ease ease, DOTweenAnimation coinPouchImage)
         {
+            if (!_rect)
+            {
+                _rect = GetComponent<RectTransform>(); 
+            }
+            
             Sequence sequence = DOTween.Sequence();
 
             float randScale = Random.Range(1.3f, 1.7f);
@@ -44,7 +49,7 @@ namespace VolcanicPig.Mobile.Ui
             });
 
             sequence
-                .Append(_rect.DOJump(GetRandomJumpPoint(fromPosition), jump, 1, .3f))
+                .Append(transform.DOJump(GetRandomJumpPoint(fromPosition), jump, 1, .3f))
                 .Join(transform.DOScale(new Vector3(randScale, randScale, randScale), .3f))
                 .Join(transform.DOLocalRotate(new Vector3(0, 0, 720), .3f, RotateMode.LocalAxisAdd))
                 .Append(transform.DOMove(toPosition, duration).SetEase(ease))
@@ -57,7 +62,7 @@ namespace VolcanicPig.Mobile.Ui
                 });
         }
 
-        private Vector2 GetRandomJumpPoint(Vector3 fromPosition)
+        private Vector3 GetRandomJumpPoint(Vector3 fromPosition)
         {
             float minX = (Screen.width / 10) * -1;
             float maxX = Screen.width / 10;
