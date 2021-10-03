@@ -19,7 +19,7 @@ namespace VolcanicPig.Mobile
 
     public class MobileGameManagerTemplate<T> : SingletonBehaviour<T>
     {
-        public static Action<int> OnCurrencyChanged;
+        public static Action<int, int> OnCurrencyChanged;
         public static Action<GameState> OnGameStateChanged;
 
 
@@ -50,8 +50,8 @@ namespace VolcanicPig.Mobile
             get { return _currency; }
             set
             {
+                OnCurrencyChanged?.Invoke(_currency, value);
                 _currency = value;
-                OnCurrencyChanged?.Invoke(value);
                 PlayerPrefs.SetInt(KCurrency, value); 
             }
         }
