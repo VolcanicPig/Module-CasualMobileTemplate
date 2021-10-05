@@ -22,7 +22,6 @@ namespace VolcanicPig.Mobile
         public static Action<int, int> OnCurrencyChanged;
         public static Action<GameState> OnGameStateChanged;
 
-
         [Header("Scenes")]
         [SerializeField] string gameScene = "GameScene";
         [SerializeField] string uiScene = "UiScene";
@@ -67,6 +66,8 @@ namespace VolcanicPig.Mobile
             }
         }
 
+        public Settings Settings; 
+
         private void Start()
         {
             LoadData(); 
@@ -75,6 +76,9 @@ namespace VolcanicPig.Mobile
 
         protected virtual void LoadData()
         {
+            Settings = new Settings(); 
+            Settings.Load();
+            
             _level = PlayerPrefs.GetInt(KLevel);
             _currency = PlayerPrefs.GetInt(KCurrency); 
         }
@@ -192,5 +196,20 @@ namespace VolcanicPig.Mobile
 
         public virtual void OnGameRestarted()
         { }
+
+        private void OnApplicationQuit()
+        {
+            Settings.Save();   
+        }
+
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            Settings.Save();
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            Settings.Save();
+        }
     }
 }
