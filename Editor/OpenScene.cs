@@ -1,32 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor; 
+using UnityEditor;
+using UnityEditor.SceneManagement;
 
 public class OpenScene : MonoBehaviour
 {
-    private const string InitScenePath = "Assets/Scenes/InitScene.unity"; 
-    private const string UiScenePath = "Assets/Scenes/UiScene.unity"; 
-    private const string GameScenePath = "Assets/Scenes/GameScene.unity"; 
+    private const string _initScenePath = "Assets/Scenes/InitScene.unity"; 
+    private const string _uiScenePath = "Assets/Scenes/UiScene.unity"; 
+    private const string _gameScenePath = "Assets/Scenes/GameScene.unity"; 
 
     [MenuItem("Volcanic Pig/Open Init Scene")]
     static void OpenInitScene()
     {
-        EditorApplication.SaveCurrentSceneIfUserWantsTo();
-        EditorApplication.OpenScene(InitScenePath);
+        EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+        EditorSceneManager.OpenScene(_initScenePath); 
     }
 
     [MenuItem("Volcanic Pig/Open UI Scene")]
     static void OpenUiScene()
     {
-        EditorApplication.SaveCurrentSceneIfUserWantsTo();
-        EditorApplication.OpenScene(UiScenePath);
+        EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+        EditorSceneManager.OpenScene(_uiScenePath); 
     }
 
     [MenuItem("Volcanic Pig/Open Game Scene")]
     static void OpenGameScene()
     {
-        EditorApplication.SaveCurrentSceneIfUserWantsTo();
-        EditorApplication.OpenScene(GameScenePath);
+        EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+        EditorSceneManager.OpenScene(_gameScenePath); 
     }
 }

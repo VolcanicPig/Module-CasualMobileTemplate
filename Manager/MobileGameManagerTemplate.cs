@@ -119,13 +119,17 @@ namespace VolcanicPig.Mobile
 
         private void ScenesFullyLoaded()
         {
-            if(playerPrefab)
+            SpawnPlayer();
+            OnGameStarted(); 
+            ChangeState(GameState.Start);
+        }
+
+        protected virtual void SpawnPlayer()
+        {
+            if (playerPrefab)
             {
                 _currentPlayerRef = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
             }
-
-            OnGameStarted(); 
-            ChangeState(GameState.Start);
         }
 
         public void StartGame()
@@ -158,11 +162,7 @@ namespace VolcanicPig.Mobile
 
             if (_currentPlayerRef) Destroy(_currentPlayerRef);
 
-            if(playerPrefab)
-            {
-                _currentPlayerRef = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-            }
-            
+            SpawnPlayer();
             ChangeState(GameState.Start);
             OnGameRestarted();
         }
@@ -188,13 +188,13 @@ namespace VolcanicPig.Mobile
             OnGameStateChanged?.Invoke(state);
         }
 
-        public virtual void OnGameStarted()
+        protected virtual void OnGameStarted()
         { }
 
-        public virtual void OnGameEnded()
+        protected virtual void OnGameEnded()
         { }
 
-        public virtual void OnGameRestarted()
+        protected virtual void OnGameRestarted()
         { }
 
         private void OnApplicationQuit()

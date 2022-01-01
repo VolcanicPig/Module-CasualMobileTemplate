@@ -1,7 +1,10 @@
 using UnityEngine;
 using VolcanicPig.Mobile;
 
-public class MobileGameManager : MobileGameManagerTemplate<MobileGameManager> 
+namespace Game
 {
-    
+    public class MobileGameManager : MobileGameManagerTemplate<MobileGameManager>
+    {
+        //DONT USE, OLD CODE WHY HERE?
+    }
 }
