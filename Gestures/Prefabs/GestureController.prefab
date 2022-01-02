@@ -40,6 +40,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1565367859742321404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa36d26974a444156ab29ec0882c4d23, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c38ea50ff24c9f4d9e2db272604bd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 1
+  swipeThreshold: 1
+  maxTapTime: 1
+  minTapCancelDist: {x: 50, y: 50}

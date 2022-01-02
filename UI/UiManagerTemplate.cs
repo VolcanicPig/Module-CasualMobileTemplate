@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace VolcanicPig.Mobile.Ui
 {
-    public class UiManager : SingletonBehaviour<UiManager>
+    public class UiManagerTemplate<T> : SingletonBehaviour<T>
     {
         public Menu[] menus;
         private Menu _currentMenu;

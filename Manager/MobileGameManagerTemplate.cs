@@ -171,19 +171,7 @@ namespace VolcanicPig.Mobile
         {
             Debug.Log($"Game State Changed :: {state}");
             
-            _gameState = state; 
-            switch (state)
-            {
-                case GameState.Start:
-                    Ui.UiManager.Instance.OpenMenu("Start");
-                    break;
-                case GameState.InGame:
-                    Ui.UiManager.Instance.OpenMenu("InGame");
-                    break;
-                case GameState.End:
-                    Ui.UiManager.Instance.OpenMenu("End");
-                    break;
-            }
+            _gameState = state;
 
             OnGameStateChanged?.Invoke(state);
         }
