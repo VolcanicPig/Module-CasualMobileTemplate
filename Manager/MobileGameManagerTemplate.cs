@@ -192,12 +192,12 @@ namespace VolcanicPig.Mobile
 
         private void OnApplicationPause(bool pauseStatus)
         {
-            Settings.Save();
+            Settings?.Save();
         }
 
         private void OnApplicationFocus(bool hasFocus)
         {
-            Settings.Save();
+            Settings?.Save();
         }
     }
 }

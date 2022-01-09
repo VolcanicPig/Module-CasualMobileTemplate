@@ -25,5 +25,15 @@ namespace VolcanicPig.Mobile
         {
             source.PlayOneShot(clip);
         }
+
+        public void PlayClip(string clipKey)
+        {
+            GetClipFromKey(clipKey, out AudioClip clip);
+
+            if (clip != null)
+            {
+                PlayClip(clip); 
+            }
+        }
     }
 }
