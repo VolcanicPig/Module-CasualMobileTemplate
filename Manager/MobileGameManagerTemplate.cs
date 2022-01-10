@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using VolcanicPig.Utilities;
 
 namespace VolcanicPig.Mobile
@@ -95,15 +96,15 @@ namespace VolcanicPig.Mobile
 
             _initScenesLoaded = 0;
 
-            if (gameScene != null)
-            {
-                sceneLoader.LoadScene(gameScene, true, true, SceneLoaded);
-                _initScenesToLoad++;
-            }
-
             if (uiScene != null)
             {
                 sceneLoader.LoadScene(uiScene, true, true, SceneLoaded);
+                _initScenesToLoad++;
+            }
+            
+            if (gameScene != null)
+            {
+                sceneLoader.LoadScene(gameScene, true, true, SceneLoaded);
                 _initScenesToLoad++;
             }
         }
@@ -119,6 +120,8 @@ namespace VolcanicPig.Mobile
 
         private void ScenesFullyLoaded()
         {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(gameScene));
+            
             SpawnPlayer();
             OnGameStarted(); 
             ChangeState(GameState.Start);
