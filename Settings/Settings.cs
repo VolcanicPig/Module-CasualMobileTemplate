@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game;
+using MoreMountains.NiceVibrations;
 using UnityEngine;
 
 namespace VolcanicPig
@@ -18,7 +20,10 @@ namespace VolcanicPig
         public void Load()
         {
             _hapticsEnabled = PlayerPrefs.GetInt(_kHapticsEnabled, 1) == 1;
-            _soundEnabled = PlayerPrefs.GetInt(_kSoundEnabled, 1) == 1; 
+            _soundEnabled = PlayerPrefs.GetInt(_kSoundEnabled, 1) == 1;
+            
+            MMVibrationManager.SetHapticsActive(_hapticsEnabled);
+            AudioManager.Instance.SetSoundEnabled(_soundEnabled); 
         }
 
         public void Save()
@@ -30,11 +35,13 @@ namespace VolcanicPig
         public void ToggleSoundEnabled()
         {
             _soundEnabled = !_soundEnabled;
+            AudioManager.Instance.SetSoundEnabled(_soundEnabled); 
         }
 
         public void ToggleHapticsEnabled()
         {
             _hapticsEnabled = !_hapticsEnabled; 
+            MMVibrationManager.SetHapticsActive(_hapticsEnabled);
         }
     }
 }

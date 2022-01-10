@@ -10,10 +10,17 @@ namespace VolcanicPig.Mobile
 
         protected AudioSource source;
 
+        private bool _soundEnabled = true; 
+
         public override void Awake()
         {
             base.Awake();
             source = GetComponent<AudioSource>(); 
+        }
+
+        public void SetSoundEnabled(bool isEnabled)
+        {
+            _soundEnabled = isEnabled; 
         }
 
         public void GetClipFromKey(string key, out AudioClip clip)
@@ -23,11 +30,13 @@ namespace VolcanicPig.Mobile
 
         public void PlayClip(AudioClip clip)
         {
+            if (!_soundEnabled) return;
             source.PlayOneShot(clip);
         }
 
         public void PlayClip(string clipKey)
         {
+            if (!_soundEnabled) return; 
             GetClipFromKey(clipKey, out AudioClip clip);
 
             if (clip != null)
