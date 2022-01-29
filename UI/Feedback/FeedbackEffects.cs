@@ -51,7 +51,7 @@ namespace VolcanicPig.Mobile.Ui
         {
             for (int i = 0; i < coinsToShow; i++)
             {
-                PooledCoinFeedback coin = ObjectPool.Instance.SpawnFromPool("CoinFeedback", feedbackParent, fromPosition) as PooledCoinFeedback;
+                PooledCoinFeedback coin = ObjectPool.Instance.SpawnFromPool("CoinFeedback", feedbackParent, fromPosition, Quaternion.identity) as PooledCoinFeedback;
                 
                 if(coin) 
                     coin.JumpMoveTo(fromPosition, coinPotPosition.position, duration, Ease.Linear, coinPouchImage);

@@ -77,7 +77,7 @@ namespace VolcanicPig.Mobile
             return null; 
         }
 
-        public PooledObjectBase SpawnFromPool(string key, Transform parent, Vector3 position)
+        public PooledObjectBase SpawnFromPool(string key, Transform parent, Vector3 position, Quaternion rotation, string layer = null)
         {
             if(!_pool.ContainsKey(key))
             {
@@ -90,9 +90,16 @@ namespace VolcanicPig.Mobile
             PooledObjectBase go = _pool[key][_pool[key].Count - 1]; 
             if(go)
             {
+                Transform goTransform = go.transform; 
                 go.gameObject.SetActive(true); 
-                go.transform.SetParent(parent); 
-                go.transform.position = position; 
+                goTransform.SetParent(parent); 
+                goTransform.position = position;
+                goTransform.rotation = rotation;
+
+                if (layer != null)
+                {
+                    go.gameObject.layer = LayerMask.NameToLayer(layer); 
+                }
 
                 _pool[key].RemoveAt(_pool[key].Count - 1); 
                 return go; 
