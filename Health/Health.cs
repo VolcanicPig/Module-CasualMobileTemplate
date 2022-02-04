@@ -7,7 +7,8 @@ namespace Game
 {
     public class Health : MonoBehaviour
     {
-        public Action Killed; 
+        public Action Killed;
+        public Action HealthChanged; 
         
         public int CurrentHealth { get; private set; }
         public float PercentageOfMax => (float)CurrentHealth / maxHealth; 
@@ -22,6 +23,7 @@ namespace Game
         public void TakeHealth(int amount)
         {
             CurrentHealth = Mathf.Max(0, CurrentHealth - amount);
+            HealthChanged?.Invoke();
 
             if (CurrentHealth == 0)
             {
@@ -32,6 +34,7 @@ namespace Game
         public void AddHealth(int amount)
         {
             CurrentHealth = Mathf.Min(maxHealth, CurrentHealth + amount); 
+            HealthChanged?.Invoke();
         }
 
         private void Kill()

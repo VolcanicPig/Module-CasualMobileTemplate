@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Object = UnityEngine.Object;
 
 namespace Game
 {
@@ -46,6 +48,17 @@ namespace Game
             foreach (Transform child in t)
             {
                 Object.Destroy(child.gameObject); 
+            }
+        }
+
+        public static IEnumerator LerpAction(Action<float> callback, float duration)
+        {
+            float timer = 0;
+            while (timer < duration)
+            {
+                callback(timer / duration); 
+                timer += Time.deltaTime;
+                yield return null;
             }
         }
     }
